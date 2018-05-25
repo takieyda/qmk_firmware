@@ -1,4 +1,4 @@
-#Takieyda's Fourier Keymap
+# Takieyda's Fourier Keymap
 
 Work in progress. More to come.
 
