@@ -9,32 +9,35 @@ extern keymap_config_t keymap_config;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 /*#define _BASE 0
-#define _FN1 1
-#define _FN2 2
-#define _FN3 3*/
+#define _LOWER 1
+#define _RAISE 2
+#define _ADJUST 3*/
 
 enum fourier_layers {
 	_BASE,
-	_FN1,
-	_FN2,
-	_FN3
+	_LOWER,
+	_RAISE,
+	_ADJUST,
+	_NAV
 };
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
-  FNC1,
-  FNC2
+  LOWER,
+  RAISE,
+  ESCNAV
 };
 
 #define KC_ KC_TRNS
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
-#define KC_FN1 FNC1 //MO(_FN1)
-#define KC_FN2 FNC2 //MO(_FN2)
-// #define KC_SPFN1 LT(_FN1, KC_SPACE)
-// #define KC_SPFN2 LT(_FN2, KC_SPACE)
-// #define KC_BSFN1 LT(_FN1, KC_BSPC)
-// #define KC_BSFN2 LT(_FN2, KC_BSPC)
+#define KC_LOWER LOWER //MO(_LOWER)
+#define KC_RAISE RAISE //MO(_RAISE)
+#define KC_ESCNAV LT(_NAV, KC_ESC)
+// #define KC_SPLOWER LT(_LOWER, KC_SPACE)
+// #define KC_SPRAISE LT(_RAISE, KC_SPACE)
+// #define KC_BSLOWER LT(_LOWER, KC_BSPC)
+// #define KC_BSRAISE LT(_RAISE, KC_BSPC)
 #define KC_RST RESET
 // #define KC_DBUG DEBUG
 #define KC_RTOG RGB_TOG
@@ -49,74 +52,85 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_kc(
  //,----+----+----+----+----+----|----+----+----+----+----+----+----.
-    ESC , Q  , W  , E  , R  , T  , Y  , U  , I  , O  , P  ,LBRC,RBRC,
+    TAB , Q  , W  , E  , R  , T  , Y  , U  , I  , O  , P  ,LBRC,RBRC,
  //|----`----`----`----`----`----|----`----`----`----`----`----`----|
-    TAB  , A  , S  , D  , F  , G  , H  , J  , K  , L  ,SCLN, ENTER  ,
+   ESCNAV, A  , S  , D  , F  , G  , H  , J  , K  , L  ,SCLN, QUOT,
  //|-----`----`----`----`----`----|----`----`----`----`----`--------|
-    LSFT   , Z  , X  , C  , V  , B  , N  , M  ,COMM,DOT ,SLSH, RSFT ,
+    LSFT   , Z  , X  , C  , V  , B  , N  , M  ,COMM,DOT ,SLSH, ENTER,
  //|-------`----`----`----`----`----|----`----`----`----`----`------|
-    LCTL ,LGUI,LALT ,FN1 ,  BSPC  ,   SPC  ,FN2  ,RALT , APP , RCTL 
+    LCTL ,LGUI,LALT ,LOWER,  BSPC ,   SPC  ,RAISE,RALT , APP , RCTL 
  //`-----+----+-----+----+--------|--------+-----+-----+-----+------'
   ),
 
-  [_FN1] = LAYOUT_kc(
+  [_LOWER] = LAYOUT_kc(
  //,----+----+----+----+----+----|----+----+----+----+----+----+----.
-    GRV , 1  , 2  , 3  , 4  , 5  , 6  , 7  , 8  , 9  , 0  ,MINS,EQL ,
+    TILD,EXLM, AT ,HASH, DLR,PERC,CIRC,AMPR,ASTR,LPRN,RPRN,MINS,EQL ,
  //|----`----`----`----`----`----|----`----`----`----`----`----`----|
-    TRNS ,    ,VOLD,VOLU,MUTE,    ,LEFT,DOWN, UP ,RGHT,    , QUOT   ,
+    TRNS , F1 , F2 , F3 , F4 , F5 , F6 ,UNDS,PLUS,LCBR,RCBR, PIPE   ,
  //|-----`----`----`----`----`----|----`----`----`----`----`--------|
-    TRNS   ,    ,    ,    ,    ,    ,    ,    ,TRNS,TRNS,TRNS,      ,
+    TRNS   , F7 , F8 , F9 , F10, F11, F12,    ,TRNS,TRNS,TRNS,      ,
  //|-------`----`----`----`----`----|----`----`----`----`----`------|
-    TRNS ,TRNS,TRNS ,TRNS,  TRNS  ,  TRNS  ,FN2  ,     ,     ,      
+    TRNS ,TRNS,TRNS ,TRNS,  TRNS  ,  TRNS  ,RAISE,     ,     ,      
  //`-----+----+-----+----+--------|--------+-----+-----+-----+------'
   ),
 
-  [_FN2] = LAYOUT_kc(
+  [_RAISE] = LAYOUT_kc(
  //,----+----+----+----+----+----|----+----+----+----+----+----+----.
-    TILD, F1 , F2 , F3 , F4 , F5 , F6 , F7 , F8 , F9 ,F10 ,F11 ,F12 ,
+    GRV ,  1 ,  2 ,  3 ,  4 , 5  ,  6 , 7  ,  8 ,  9 ,  0 ,    ,    ,
  //|----`----`----`----`----`----|----`----`----`----`----`----`----|
-    TRNS ,RMOD,    ,    ,INS ,PGUP,HOME,    ,    ,    ,    ,  BSLS  ,
+    TRNS ,    ,    ,    ,INS ,PGUP,HOME,MINS, EQL,LBRC,RBRC,  BSLS  ,
  //|-----`----`----`----`----`----|----`----`----`----`----`--------|
-    TRNS   ,RTOG,    ,    ,DEL ,PGDN,END ,    ,PSCR,SLCK,PAUS,      ,
+    TRNS   ,    ,    ,    ,DEL ,PGDN,END ,    ,TRNS,TRNS,TRNS,      ,
  //|-------`----`----`----`----`----|----`----`----`----`----`------|
-    TRNS ,TRNS,TRNS ,FN1 , DEL    ,  TRNS  ,TRNS ,     ,     ,      
+    TRNS ,TRNS,TRNS ,LOWER, DEL   ,  TRNS  ,TRNS ,     ,     ,      
  //`-----+----+-----+----+--------|--------+-----+-----+-----+------'
   ),
   
-  [_FN3] = LAYOUT_kc(
+  [_ADJUST] = LAYOUT_kc(
  //,----+----+----+----+----+----|----+----+----+----+----+----+----.
         ,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,
  //|----`----`----`----`----`----|----`----`----`----`----`----`----|
-         ,    ,RHUI,RSAI,RVAI,    ,    ,    ,    ,    ,    ,        ,
+         ,    ,RHUI,RSAI,RVAI,    ,    ,PSCR,SLCK,PAUS,    ,        ,
  //|-----`----`----`----`----`----|----`----`----`----`----`--------|
     RMOD   ,    ,RHUD,RSAD,RVAD,    ,    ,    ,    ,    ,    ,      ,
  //|-------`----`----`----`----`----|----`----`----`----`----`------|
     RTOG ,    ,     ,TRNS, TRNS   ,  TRNS  ,TRNS ,     ,     ,      
  //`-----+----+-----+----+--------|--------+-----+-----+-----+------'
+  ),
+  
+  [_NAV] = LAYOUT_kc(
+ //,----+----+----+----+----+----|----+----+----+----+----+----+----.
+        ,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,
+ //|----`----`----`----`----`----|----`----`----`----`----`----`----|
+         ,    ,VOLD,VOLU,MUTE,    ,LEFT,DOWN, UP ,RGHT,    ,        ,
+ //|-----`----`----`----`----`----|----`----`----`----`----`--------|
+           ,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,      ,
+ //|-------`----`----`----`----`----|----`----`----`----`----`------|
+         ,    ,     ,    ,  DEL   ,        ,     ,     ,     ,      
+ //`-----+----+-----+----+--------|--------+-----+-----+-----+------'
   )
-
   
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	switch (keycode) {
-		case FNC1:
+		case LOWER:
 			if (record->event.pressed) {
-				layer_on(_FN1);
-				update_tri_layer(_FN1, _FN2, _FN3);
+				layer_on(_LOWER);
+				update_tri_layer(_LOWER, _RAISE, _ADJUST);
 			} else {
-				layer_off(_FN1);
-				update_tri_layer(_FN1, _FN2, _FN3);
+				layer_off(_LOWER);
+				update_tri_layer(_LOWER, _RAISE, _ADJUST);
 			}
 			return false;
 			break;
-		case FNC2:
+		case RAISE:
 			if (record->event.pressed) {
-				layer_on(_FN2);
-				update_tri_layer(_FN1, _FN2, _FN3);
+				layer_on(_RAISE);
+				update_tri_layer(_LOWER, _RAISE, _ADJUST);
 			} else {
-				layer_off(_FN2);
-				update_tri_layer(_FN1, _FN2, _FN3);
+				layer_off(_RAISE);
+				update_tri_layer(_LOWER, _RAISE, _ADJUST);
 			}
 			return false;
 			break;

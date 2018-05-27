@@ -2,8 +2,11 @@
 
 Work in progress. More to come.
 
-- Update keymap to be more in line with Planck/Contra
-- Description
-- Features
-- Keymap layout image
-- ...?
+## Description
+A Fourier keymap that tries to mimic the layout I use on the Planck.
+
+## Features
+-RGB Underglow for 30 LEDs using WS2812 LED strips.
+
+## Layout
+[Imgur](https://i.imgur.com/ZDjbXZK.jpg)
