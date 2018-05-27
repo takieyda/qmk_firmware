@@ -14,7 +14,7 @@ A layout that takes a little bit from the Planck and a little bit from the Pok3r
   - Adjust: Hold Lower and Raise
 
 ## Layout
-[Imgur](https://i.imgur.com/ULnqvpl.jpg)
+![Imgur](https://i.imgur.com/ULnqvpl.jpg)
 
 ## To Do
 - Add RGB underglow
