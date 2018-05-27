@@ -9,4 +9,4 @@ A Fourier keymap that tries to mimic the layout I use on the Planck.
 -RGB Underglow for 30 LEDs using WS2812 LED strips.
 
 ## Layout
-[Imgur](https://i.imgur.com/ZDjbXZK.jpg)
+![Imgur](https://i.imgur.com/ZDjbXZK.jpg)
