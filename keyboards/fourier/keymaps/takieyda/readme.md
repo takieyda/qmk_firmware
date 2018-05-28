@@ -15,4 +15,4 @@ A Fourier keymap that tries to mimic the layout I use on the Planck.
   - Adjust: Hold Lower and Raise
 
 ## Layout
-![Imgur](https://i.imgur.com/ZDjbXZK.jpg)
+![Imgur](https://i.imgur.com/rF7JYnI.jpg)
