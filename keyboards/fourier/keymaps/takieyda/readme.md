@@ -6,7 +6,7 @@ Work in progress. More to come.
 A Fourier keymap that tries to mimic the layout I use on the Planck.
 
 ## Features
-- RGB Underglow for 30 LEDs using WS2812 LED strips.
+- RGB Underglow for 30 LEDs using WS2812 LED strips, 15 on each half.
 - Layers
   - Base
   - Lower
