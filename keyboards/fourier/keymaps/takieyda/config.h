@@ -32,4 +32,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* ws2812 RGB LED */
 #undef RGBLED_NUM
-#define RGBLED_NUM 30    // Number of LEDs
+#define RGBLED_NUM 24    // Number of LEDs

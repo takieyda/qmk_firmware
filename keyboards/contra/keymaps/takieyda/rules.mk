@@ -1,0 +1,4 @@
+#undef RGB_ENABLE
+#define RGBLIGHT_ENABLE = yes
+
+LAYOUTS_HAS_RGB = yes

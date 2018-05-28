@@ -37,7 +37,7 @@
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
 
-#endif
-
 #define BACKLIGHT_BREATHING
 #define BREATHING_PERIOD 8
+
+#endif
