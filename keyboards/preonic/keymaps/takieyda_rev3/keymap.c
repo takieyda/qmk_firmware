@@ -181,15 +181,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        case NAV:
-          if (record->event.pressed) {
-            layer_on(_NAV);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          } else {
-            layer_off(_NAV);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          }
-          return false;
           break;
       }
     return true;
