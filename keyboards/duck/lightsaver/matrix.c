@@ -22,7 +22,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "print.h"
 #include "debug.h"
 
-static uint8_t debouncing = DEBOUNCING_DELAY;
+#ifndef DEBOUNCE
+#    define DEBOUNCE 5
+#endif
+
+static uint8_t debouncing = DEBOUNCE;
 
 /* matrix state(1:on, 0:off) */
 static matrix_row_t matrix[MATRIX_ROWS];
@@ -70,7 +74,7 @@ void matrix_init(void) {
     matrix_debouncing[i] = 0;
   }
 
-  matrix_init_quantum();
+  matrix_init_kb();
 }
 
 uint8_t matrix_scan(void) {
@@ -90,7 +94,7 @@ uint8_t matrix_scan(void) {
         if (debouncing) {
             dprint("bounce!: "); dprintf("%02X", debouncing); dprintln();
         }        
-        debouncing = DEBOUNCING_DELAY;
+        debouncing = DEBOUNCE;
       }
     }
     unselect_cols();
@@ -106,7 +110,7 @@ uint8_t matrix_scan(void) {
     }
   }
 
-  matrix_scan_quantum();
+  matrix_scan_kb();
   return 1;
 }
 
@@ -138,7 +142,7 @@ static void init_rows(void) {
   PORTE |=  0b00000100;
 }
 
-static uint8_t read_rows() {
+static uint8_t read_rows(void) {
   return (PINB&(1<<7) ? (1<<0) : 0) |
     (PIND&(1<<0) ? (1<<1) : 0) |
     (PIND&(1<<1) ? (1<<2) : 0) |
